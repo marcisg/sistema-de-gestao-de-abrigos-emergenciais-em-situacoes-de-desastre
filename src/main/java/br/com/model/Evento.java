@@ -11,11 +11,13 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String tipo;
     private LocalDate dataInicial = LocalDate.now();
-    private LocalDate dataFinal = LocalDate.now();
+    private LocalDate dataFinal;
 
-    public Evento(String nome, LocalDate dataInicial, LocalDate dataFinal) {
+    public Evento(String nome, String tipo, LocalDate dataInicial, LocalDate dataFinal) {
         this.nome = nome;
+        this.tipo = tipo;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
     }
@@ -31,6 +33,10 @@ public class Evento {
         return id;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
     public LocalDate getDataInicial() {
         return dataInicial;
     }
@@ -39,7 +45,12 @@ public class Evento {
         return dataFinal;
     }
 
-    public void setNome(String s) {
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public void setDataInicial(LocalDate dataInicial) {
@@ -52,12 +63,12 @@ public class Evento {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Evento{");
-        sb.append("id=").append(id);
-        sb.append(", nome='").append(nome).append('\'');
-        sb.append(", dataInicial=").append(dataInicial);
-        sb.append(", dataFinal=").append(dataFinal);
-        sb.append('}');
+        final StringBuilder sb = new StringBuilder("Evento\n");
+        sb.append("Id: ").append(id);
+        sb.append(" | Nome: ").append(nome);
+        sb.append(" | Tipo: ").append(tipo);
+        sb.append(" | Data Inicial: ").append(dataInicial);
+        sb.append(" | Data Final: ").append(dataFinal);
         return sb.toString();
     }
 }
