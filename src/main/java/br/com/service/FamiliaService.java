@@ -43,11 +43,6 @@ public class FamiliaService {
         familiaDao.cadastrarMembro(membro);
     }
 
-    public void excluirMembro(Familia familia, Membro membro){
-        familia.removerMembro(membro);
-        familiaDao.removerMembro(membro);
-    }
-
     public void completarCadastro(Familia familia, String cpf, String telefone){
         if (familia.getMembros().isEmpty()) {
             throw new RuntimeException("Cadastre pelo menos um membro antes de completar o cadastro.");
